@@ -3,14 +3,7 @@
 ## Scaling
 ### Initial Implementation
 
-### Vertical Partitioning
-
-### Horizontal Partitioning
-
-### Directory Partitioning
-Hash values...
-
-## Scaling to 10M users
+### Scaling to 10M users
 * Stateless web servers and web services
 * CDNs for static assets
 * Caching for dynamic assets
@@ -31,6 +24,8 @@ Building scalable systems introduces many problems that need to be solved.
 
 ## Caching
 
+## Partitioning
+### Vertical Partitioning
 
 ## Service Oriented Architecture
 
@@ -41,10 +36,13 @@ Cassandra can scale to 100s of brokers, millions of messges per secod, with real
 Cassandra is used by [35% of Fortune 500 companies](https://opensourceunderdogs.com/episode-13-confluent-apache-kafka-streaming-with-jay-kreps), 
 including AirBnB, LinkedIn, Netflix, and Uber.
 
+## Horizontal Partitioning
 
+### Directory Partitioning
+Hash values
 
-## Data Partitioning (Sharding)
-(replications)
+### Database Partitioning (Sharding)
+(replication)
 
 ## Data Integrity
 Merkle tree
@@ -89,16 +87,16 @@ as well as applications such as
 ## Jump hash table 
 The consisant hashing scheme solves the problem of distributing workloads at the scale of most distributed applications. For large scale systems, synchronizing systems performing consistant hashing starts becoming inefficient. For a system where the load is distributed across 1000 systems, the consistant hashing scheme requires about 1000 table entries per system in order to equalize the traffic load per system within 3%. This results in several MByte of data per load balancer distributing traffic that must be synchronized reliably across the network as servers are added or go off-line due to system failures. A much more efficient way distributing traffic is with hashing bins generated using a pseudo-random function, where the only information that needs to be shared between systems is the number of hash partitions.
 
-A [jump has table](https://arxiv.org/ftp/arxiv/papers/1406/1406.2294.pdf) uses a pseudorandom code to generate hash bins that allows multiple systems to be synchronized without sharing a large amount of data between systems. This jump hash function is quite simple to implement:
+A [jump hash table](https://arxiv.org/ftp/arxiv/papers/1406/1406.2294.pdf) uses a pseudorandom code to generate hash bins that allows multiple systems to be synchronized without sharing a large amount of data between systems. This jump hash function is quite simple to implement:
 ```
 int32_t JumpConsistentHash(uint64_t key, int32_t num_buckets) {
-int64_t b = _1, j = 0_
+	int64_t b = -1, j = 0;
 	while (j < num_buckets) {
-		b = j_
-		key = key * 2862933555777941757ULL + 1_
-		j = (b + 1) * (double(1LL << 31) / double((key >> 33) + 1))_
+		b = j;
+		key = key * 2862933555777941757ULL + 1;
+		j = (b + 1) * (double(1LL << 31) / double((key >> 33) + 1));
 	}
-	return b_
+	return b;
 }
 
 ```
@@ -106,7 +104,7 @@ Hash bins generating using a jump hash table are more equal in size than if gene
 
 
 ## Sparse Distributed Hash Table
-[A sparse distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table) (DHT) uses a segmented keyspace 
+A [sparse distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table) (DHT) uses a segmented keyspace 
 (for example assigned by hashing a file) to store data, and an overlay network to determine where a key-value
 pair should be stored, as well as where to retrieve it when requested.
 
@@ -134,7 +132,7 @@ rather than structured data in records and fields. Document databases include Co
 ### Graph Database
 
 ### Key-Value Store
-Redis...
+Redis
 
 ### Wide-Column Database
 Wide-column databases are well suited to storing versioned web pages, where the
@@ -143,7 +141,10 @@ data key is used to access different snapshots in time.
 Wide-column databases include Google BigTable.
 
 ## Service Orchestration
-### Hashicorp Nomad, Terraform
+### Hashicorp 
+* Nomad
+* Terraform
+
 ### Kubernetes
 
 ## Monitoring
