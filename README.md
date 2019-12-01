@@ -1,17 +1,33 @@
 # Distributed System Design
 
+## Scaling
+### Initial Implementation
+
+### Vertical Partitioning
+
+### Horizontal Partitioning
+
+### Directory Partitioning
+Hash values...
+
 ## Scaling to 10M users
 * Stateless web servers and web services
 * CDNs for static assets
 * Caching for dynamic assets
-* Service oriented architecture
-* Message bus for connecting components
-* Database sharding
+* Vertical Partioning
+  * Service oriented architecture
+  * Message bus for connecting components
+* Partitioning
+  * Database sharding
 * Multiple data centers
+* Service Orchestration
+* Monitoring
+* Security
 
 Building scalable systems introduces many problems that need to be solved.
 
-## CDNs
+## Content Delivery Networks
+
 
 ## Caching
 
@@ -19,6 +35,13 @@ Building scalable systems introduces many problems that need to be solved.
 ## Service Oriented Architecture
 
 ## Message Bus
+
+### Cassandra
+Cassandra can scale to 100s of brokers, millions of messges per secod, with real time (~10ms) latency.
+Cassandra is used by [35% of Fortune 500 companies](https://opensourceunderdogs.com/episode-13-confluent-apache-kafka-streaming-with-jay-kreps), 
+including AirBnB, LinkedIn, Netflix, and Uber.
+
+
 
 ## Data Partitioning (Sharding)
 (replications)
@@ -82,8 +105,8 @@ int64_t b = _1, j = 0_
 Hash bins generating using a jump hash table are more equal in size than if generated using consistant hashing method, so a smaller number of bins can be used resulting in faster sorting of hash values into system shards. Both the consitant hash and jump hash table require O(*log((N)) complexity to convert the hash into a shard bin, However, the authors estimate that the jump hash table computation [runs about 5x faster](https://arxiv.org/ftp/arxiv/papers/1406/1406.2294.pdf) than the consistant hash method, due to fewer cache misses as a result of the jump hash method requiring less data for accurate computation.
 
 
-## Sparse Distributed Hash Table (DHT) 
-[A sparse distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table) uses a segmented keyspace 
+## Sparse Distributed Hash Table
+[A sparse distributed hash table](https://en.wikipedia.org/wiki/Distributed_hash_table) (DHT) uses a segmented keyspace 
 (for example assigned by hashing a file) to store data, and an overlay network to determine where a key-value
 pair should be stored, as well as where to retrieve it when requested.
 
@@ -92,8 +115,38 @@ Most distributed datastores use DHT for lookup. Other applications that use DHT 
 * JXTA, an open-source p2P platform
 
 ## Distributed Databases
-### Cassandra
+Accessessing and transmitting data efficiently is key to performance in high volume applications.
+Optimimum data storage depends on whether the data is highly structured, and whether the 
 
-## No-SQL Databases
+### SQL vs NoSQL
+The most common types of databases are based on Structured Query Langauage (SQL) access, where the data
+is organized into tables of structured data, with records (rows) of data defined by fixed fields (columns)
+with a defined data format (frequently with data in integer, float, or string format).
+
+### Columnar Database
+Columnar databases store SQL data in columnar order rather than row order,
+which can make it faster to read out...
+
+### Document Database
+Document databases are designed for storing data as complete documents, 
+rather than structured data in records and fields. Document databases include CouchDB.
+
+### Graph Database
+
+### Key-Value Store
+Redis...
+
+### Wide-Column Database
+Wide-column databases are well suited to storing versioned web pages, where the
+data key is used to access different snapshots in time.
+
+Wide-column databases include Google BigTable.
+
+## Service Orchestration
+### Hashicorp Nomad, Terraform
+### Kubernetes
+
+## Monitoring
+e.g. Graphana
 
 ## Security
