@@ -1,4 +1,4 @@
-# Distributed System Design
++# Distributed System Design
 
 Scaling of many web services tends to start at the same point (client requests handled by a single server),
 unless there are strong redundancy or other reliability requirements.
@@ -63,7 +63,7 @@ Hash values
 
 ### Message Bus
 
-Cassandra can scale to 100s of brokers and millions of messages per second with real time (~10 ms) latency. Cassandra is used by 
+Kafka can scale to 100s of brokers and millions of messages per second with real time (~10 ms) latency. Kafka is used by 
 [35% of Fortune 500 companies](https://opensourceunderdogs.com/episode-13-confluent-apache-kafka-streaming-with-jay-kreps), 
 including AirBnB, LinkedIn, Netflix, and Uber.
 
@@ -133,7 +133,11 @@ Most distributed datastores use DHT for lookup. Other applications that use DHT 
 
 ## Distributed Databases
 Accessing and transmitting data efficiently is key to performance in high volume applications.
-Optimum data storage depends on whether the data is highly structured, and whether the 
+Optimum data storage depends on whether the data is highly structured, and whether the ...
+
+* Cassandra: Replicates identical data across distributed nodes. Every node of a cluster is identical (Amazon managed service 
+  [now in preview](https://aws.amazon.com/about-aws/whats-new/2019/12/announcing-amazon-managed-apache-cassandra-service-now-in-preview))
+* Riak
 
 ### SQL vs NoSQL
 The most common types of databases are based on Structured Query Language (SQL) access, where the data
