@@ -189,11 +189,25 @@ Out of 8,000 attendees to Kubecon 2019, 73% were first-timers.
 Kubernetes can be very complex to run, and requires packaging your software in Docker containers which has
 [potential reliability issues](https://medium.com/@copyconstruct/schedulers-kubernetes-and-nomad-b0f2e14a896)
 
+[Troubleshooting Kubernetes](https://learnk8s.io/troubleshooting-deployments)
+![troubleshooting kubernetes](figs/kubernetes_troubleshooting.png)
+
 
 ## Monitoring
 Distributed systems are far too complex at scale to monitor manually. Many software companies have developed
 monitoring products to help with this task.
-### Graphana
+
+Monitoring systems are write-heavy; large amounts of data needs to be continually logged, but might only be analyzed
+when there is a performance problem. For example, Facebook's Gorilla time series data base (TSDB) writes
+[10's of millions of data points/sec](http://www.vldb.org/pvldb/vol8/p1816-teller.pdf), 
+with a read rate that is orders of magnitude lower.
+
+### Time Series Database
+Network performance issues tend to emerge after a new software release, configuration change,
+or network hardware failure. Data should be recorded with fine resolution to see changes
+in performance immediately after a system change.
+
+Grapha's Metrictank is a time series database modeled after Facebook's Gorilla TSDB.
 
 
 ## Security
