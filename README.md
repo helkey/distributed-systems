@@ -1,4 +1,4 @@
-+# Distributed System Design
+# Distributed System Design
 
 Scaling of many web services tends to start at the same point (client requests handled by a single server),
 unless there are strong redundancy or other reliability requirements.
@@ -38,7 +38,7 @@ using every available method to improve availability and reliability.
 
 Using a distributed architecture to build scalable cloud-based applications 
 introduces many problems that need to be solved.
-
+v
 
 ## Content Delivery Networks
 One of the simplest scaling methods is to put static assets (such as photos and graphics) on a content delivery network,
@@ -69,7 +69,7 @@ including AirBnB, LinkedIn, Netflix, and Uber.
 
 
 ## CAP Theorem
-The CAP theorem](https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/) says that is impossible for distributed systems to simultaneously achieve:
+The [CAP theorem](https://mwhittaker.github.io/blog/an_illustrated_proof_of_the_cap_theorem/) says that is impossible for distributed systems to simultaneously achieve:
 * Consistency
 * Availability
 * Partition tolerance (network partition due to communication failure)
@@ -119,7 +119,7 @@ int32_t JumpConsistentHash(uint64_t key, int32_t num_buckets) {
 	return b;
 }
 ```
-Hash bins generating using a jump hash table are more equal in size than if generated using consistent hashing method, so a smaller number of bins can be used resulting in faster sorting of hash values into system shards. Both the consistent hash and jump hash table require O(*log*((N)) complexity to convert the hash into a shard bin, However, the authors estimate that the jump hash table computation [runs about 5x faster](https://arxiv.org/ftp/arxiv/papers/1406/1406.2294.pdf) than the consistent hash method, due to fewer cache misses as a result of the jump hash method requiring less data for accurate computation.
+Hash bins generating using a jump hash table are more equal in size than if generated using consistent hashing method, so a smaller number of bins can be used resulting in faster sorting of hash values into system shards. Both the consistent hash and jump hash table require O(*log*(N)) complexity to convert the hash into a shard bin, However, the authors estimate that the jump hash table computation [runs about 5x faster](https://arxiv.org/ftp/arxiv/papers/1406/1406.2294.pdf) than the consistent hash method, due to fewer cache misses as a result of the jump hash method requiring less data for accurate computation.
 
 
 ## Sparse Distributed Hash Table
@@ -135,8 +135,8 @@ Most distributed datastores use DHT for lookup. Other applications that use DHT 
 Accessing and transmitting data efficiently is key to performance in high volume applications.
 Optimum data storage depends on whether the data is highly structured, and whether the ...
 
-* Cassandra: Replicates identical data across distributed nodes. Every node of a cluster is identical (Amazon managed service 
-  [now in preview](https://aws.amazon.com/about-aws/whats-new/2019/12/announcing-amazon-managed-apache-cassandra-service-now-in-preview))
+* Cassandra: Replicates identical data across distributed nodes. Every node of a cluster is identical 
+  * Cassandra AWS  managed service  [now in preview](https://aws.amazon.com/about-aws/whats-new/2019/12/announcing-amazon-managed-apache-cassandra-service-now-in-preview))
 * Riak
 
 ### SQL vs NoSQL
@@ -189,7 +189,7 @@ Out of 8,000 attendees to Kubecon 2019, 73% were first-timers.
 Kubernetes can be very complex to run, and requires packaging your software in Docker containers which has
 [potential reliability issues](https://medium.com/@copyconstruct/schedulers-kubernetes-and-nomad-b0f2e14a896)
 
-[Troubleshooting Kubernetes](https://learnk8s.io/troubleshooting-deployments)
+* [Troubleshooting Kubernetes](https://learnk8s.io/troubleshooting-deployments):
 ![troubleshooting kubernetes](figs/kubernetes_troubleshooting.png)
 
 
@@ -210,4 +210,12 @@ in performance immediately after a system change.
 Grapha's Metrictank is a time series database modeled after Facebook's Gorilla TSDB.
 
 
-## Security
+## Cloud Security
+
+
+## Cloud Services
+
+### AWS
+The edX 3-course series []() provides a good overview of AWS cloud services. The example in Course 1 covers EC2, S3, SNS () message bus, X-Ray...
+
+![edX example system architecture](figs/edX_arch_diagram.jpg)
