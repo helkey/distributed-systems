@@ -62,10 +62,17 @@ Hash values
 ### Service Oriented Architecture
 
 ### Message Bus
+Message bus components can combine the functions of load balancing, task assignment, heart beat for server monitoring, and data persistance.
 
-Kafka can scale to 100s of brokers and millions of messages per second with real time (~10 ms) latency. Kafka is used by 
-[35% of Fortune 500 companies](https://opensourceunderdogs.com/episode-13-confluent-apache-kafka-streaming-with-jay-kreps), 
+RabbitMQ is easy to use for simple applications. Redis Queue is a commonly-used message bus for moderate load applications.
+For high load applications, Kafka can scale to 100s of brokers and millions of messages per second with real time (~10 ms) latency. 
+Kafka is used by [35% of Fortune 500 companies](https://opensourceunderdogs.com/episode-13-confluent-apache-kafka-streaming-with-jay-kreps), 
 including AirBnB, LinkedIn, Netflix, and Uber.
+
+AWS offers managed message services for applications scaling from very low volume to very high volume. [Kinesis]() is a full-function full function message bus similar to Kafka. For simpler requirements, AWS [SNS]() (Simple Notification Service) offers... 
+AWS [SQS]() (Simple Queue Service) is a message queueing service that allows web service applications to send messages over a simple queue. 
+
+
 
 
 ## CAP Theorem
