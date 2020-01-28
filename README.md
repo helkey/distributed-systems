@@ -313,7 +313,7 @@ var pol = &ladon.DefaultPolicy{
 		},
 	},
 }
-
+```
 
 ## Security Assertion Markup Language (SAML)
 SAML is an identity federation standard, allowing third-party authentication of users or your server or allowing you to authenticate users or a third party.
