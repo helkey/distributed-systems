@@ -213,7 +213,7 @@ Network performance issues tend to emerge after a new software release, configur
 or network hardware failure. Data should be recorded with fine resolution to see changes
 in performance immediately after a system change.
 
-Grapha's Metrictank is a time series database modeled after Facebook's Gorilla TSDB.
+Graphana's *Metrictank* is a time series database modeled after Facebook's Gorilla TSDB.
 
 
 ## Cloud Security
@@ -269,7 +269,7 @@ but provides much finer-grained control of permissions. `Landon` controls 'who i
 * **Something**: Arbitrary unique resource name, e.g. "Unique-resource-name"
 * **Context**: Current context such resource owner, request date, IP Address, ...
 
-An example of [creating an access policy](https://github.com/ory/ladon/blob/master/README.md) in Go is give on the Github project page:
+An example of [creating an access policy](https://github.com/ory/ladon/blob/master/README.md) in Go is give on the [`Landon`](https://github.com/ory/ladon) project page:
 ```go
 import "github.com/ory/ladon"
 
