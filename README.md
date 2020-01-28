@@ -38,7 +38,6 @@ using every available method to improve availability and reliability.
 
 Using a distributed architecture to build scalable cloud-based applications 
 introduces many problems that need to be solved.
-v
 
 ## Content Delivery Networks
 One of the simplest scaling methods is to put static assets (such as photos and graphics) on a content delivery network,
