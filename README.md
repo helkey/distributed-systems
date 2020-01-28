@@ -244,12 +244,6 @@ and results in a large number of roles being defined. This approach results in o
 as the distributed system evolves and users find they don't have adequate permissions to all of the system resources 
 that they need access to.
 
-### Attribute-Based Access Management (ABAM)
-
-### Amazon IAM
-Amazon IAM is often the basis of comparison for IAM systems, due to the dominance AWS in cloud computing.
-Amazon uses role-based access management for many network functions.
-
 Some [example IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html) include:
 * Allow access during a specific range of dates
 * Allows enabling and disabling AWS Regions
@@ -259,6 +253,16 @@ Some [example IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/acc
 
 AWS limits AWS accounts to 1,000 roles (although an increase in roles can be requested), which places
 some limit on how fine-grained AIM access permissions can be.
+
+### Attribute-Based Access Management (ABAM)
+Amazon IAM is often the standard for comparison of IAM systems, due to the dominance AWS in cloud computing.
+Amazon uses role-based access management for many network functions.
+
+AWS also supports [using tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html) for Attribute-Based Access Management (ABAM). You can use tag conditions to grant access permissions, which provides much finer control of resource access.
+For example, you can set up tags such as:
+* access-project=Lightning for the **Lightning** project
+* access-project=eng for the Engineering team
+* access-project=sre for the Site Relibility Engineering team
 
 ### Golang Access Control Policies Implementation
 [`Landon`](https://github.com/ory/ladon) is an access control policy implementation written in Go which is 'inspired by AWS' policies,
